@@ -25,8 +25,10 @@ namespace Loja.Domain.Shared
             }
         }
 
+
         private List<INotification> _domainEvents;
 
+        [JsonIgnore]
         public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
 
         public void AddDomainEvent(INotification eventItem)

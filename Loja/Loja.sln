@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loja.Api", "server\src\Loja
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 - CrossCutting", "{FF58BABF-9E6E-4413-BE6B-2F6E722CB146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja.Infra.CrossCutting.IoC", "server\src\Loja.Infra.CrossCutting.IoC\Loja.Infra.CrossCutting.IoC.csproj", "{3B72B2F0-A3E3-4235-8BE4-B914B33D3569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loja.Infra.CrossCutting.IoC", "server\src\Loja.Infra.CrossCutting.IoC\Loja.Infra.CrossCutting.IoC.csproj", "{3B72B2F0-A3E3-4235-8BE4-B914B33D3569}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loja.Api.Tests", "server\src\Loja.Tests\Api\Loja.Api.Tests\Loja.Api.Tests.csproj", "{0A407528-B3E1-47D4-A4AA-365D3BD67BF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja.Infra.CrossCutting.Identity", "server\src\Loja.Infra.CrossCutting.Identity\Loja.Infra.CrossCutting.Identity.csproj", "{F46944F6-C42C-4BB1-8158-0C5FCE2E262F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{3B72B2F0-A3E3-4235-8BE4-B914B33D3569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B72B2F0-A3E3-4235-8BE4-B914B33D3569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B72B2F0-A3E3-4235-8BE4-B914B33D3569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A407528-B3E1-47D4-A4AA-365D3BD67BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A407528-B3E1-47D4-A4AA-365D3BD67BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A407528-B3E1-47D4-A4AA-365D3BD67BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A407528-B3E1-47D4-A4AA-365D3BD67BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F46944F6-C42C-4BB1-8158-0C5FCE2E262F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F46944F6-C42C-4BB1-8158-0C5FCE2E262F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F46944F6-C42C-4BB1-8158-0C5FCE2E262F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F46944F6-C42C-4BB1-8158-0C5FCE2E262F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +75,8 @@ Global
 		{69A89F73-B08E-4882-A58D-219AD6026DDC} = {6DB53BBD-AD2C-4D07-8F82-7861E509A928}
 		{FF58BABF-9E6E-4413-BE6B-2F6E722CB146} = {D19A8648-2026-4268-BF35-47445D31FC0E}
 		{3B72B2F0-A3E3-4235-8BE4-B914B33D3569} = {FF58BABF-9E6E-4413-BE6B-2F6E722CB146}
+		{0A407528-B3E1-47D4-A4AA-365D3BD67BF1} = {8306EE5C-0652-4347-B736-83C34D8B2D52}
+		{F46944F6-C42C-4BB1-8158-0C5FCE2E262F} = {FF58BABF-9E6E-4413-BE6B-2F6E722CB146}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D8A4F67-9DE7-458C-B255-335F86376096}

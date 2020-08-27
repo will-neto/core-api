@@ -1,0 +1,60 @@
+<div class="container">
+
+    <h4> Categoria - Cadastro </h4>
+
+    <br/>
+
+    <form novalidate (ngSubmit)="adicionarCategoria()" [formGroup]="cadastroForm">
+
+        <div class="row">
+            <div class="form-group  col-md-6">
+                <input type="text" placeholder="Descrição" id="descricao" name="descricao" class="form-control" formControlName="descricao"/>
+              
+                <span class="text-danger" *ngIf="displayMessage.descricao">
+                    <p [innerHTML]="displayMessage.descricao"></p>
+                </span>
+
+                <!-- Verifica se possui qualquer tipo de erro -->
+                <!-- <span class="text-danger" *ngIf="cadastroForm.get('descricao').errors?.required && (cadastroForm.get('descricao').dirty || cadastroForm.get('descricao').touched) ">
+                    Preencha o campo.
+                </span>
+                <span class="text-danger" *ngIf="cadastroForm.get('descricao').errors?.maxlength && (cadastroForm.get('descricao').dirty || cadastroForm.get('descricao').touched) ">
+                    Insira menos de 60 caracteres.
+                </span> -->
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" placeholder="Path Imagem" id="imagemUrl" name="imagemUrl"  class="form-control" formControlName="imagemUrl"/>
+            </div>
+        </div>
+
+   
+        <span class="text-danger" *ngIf="displayMessage.imagemUrl">
+            <p [innerHTML]="displayMessage.imagemUrl"></p>
+        </span>
+
+
+        <!-- <span class="text-danger" *ngIf="cadastroForm.get('imagemUrl')?.errors?.required && (cadastroForm.get('imagemUrl').dirty || cadastroForm.get('imagemUrl').touched) ">
+            Preencha o campo.
+        </span>
+        <span class="text-danger" *ngIf="cadastroForm.get('imagemUrl')?.errors?.rangeLength && (cadastroForm.get('imagemUrl').dirty || cadastroForm.get('imagemUrl').touched) ">
+            Insira entre 5 a 60 caracteres.
+        </span> -->
+
+        <div class="row">     
+            <div class="form-group col-md-6">
+                <label for="ativo control-label"> Ativo? </label> <br/>
+                <input type="checkbox" id="ativo" name="ativo" value="true" formControlName="ativo"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" value="Cadastrar" class="btn btn-outline-success"/>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -16,6 +16,10 @@ namespace Loja.Infra.Data.EntityConfigurations
 
             builder.Property(e => e.Descricao).HasMaxLength(60);
 
+            builder.Property(e => e.ImagemUrl).HasMaxLength(60);
+
+            builder.Property(e => e.Ativo);
+
             builder.Ignore(e => e.Id);
         }
     }

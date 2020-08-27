@@ -9,5 +9,6 @@ namespace Loja.Domain.Categorias
     public interface ICategoriaRepository : IRepository<Categoria>
     {
         Task<IEnumerable<Categoria>> ListarAsync();
+        Task<Categoria> ObterAsync(int categoriaId);
     }
 }

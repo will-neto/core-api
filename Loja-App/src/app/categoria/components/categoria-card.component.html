@@ -1,0 +1,28 @@
+<ng-content select=".corre"></ng-content>
+
+<!-- <h4  class="corre"> {{ categoria.descricao | titlecase }} </h4> -->
+        
+<p > {{ '0.0' | currency: 'BRL' : true : '1.2-2' : 'pt' }}</p>
+
+<a href="#" class="btn btn-outline-primary" 
+    [routerLink]="['../detalhes', categoria.categoriaId ]"    
+    routerLinkActive="router-link-active" > Detalhes </a>
+
+<a href="javascript:void(0)" 
+    (click)="emitirEvento()" 
+    [ngClass]="categoria.ativo ? 'btn-danger' : 'btn-success'"
+    class="btn" >
+    {{ categoria.ativo ? 'Desativar' : 'Ativar' }} 
+</a>
+
+<div [ngSwitch]="categoria.ativo">
+
+    <div *ngSwitchCase="true"> <span style="color: green"> Ativo </span> </div>
+
+    <div *ngSwitchDefault>                    
+        <span style="color: red"> Inativo </span>
+    </div>
+
+</div>
+
+<ng-content></ng-content>

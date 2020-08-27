@@ -1,0 +1,15 @@
+<div class="container" >  
+    <div class="row">
+    
+        <categoria-card   
+            *ngFor="let categoria of categoriasMapped;"
+            [categoria]="categoria"
+            (status)="mudarStatus($event)"
+            class="col-md-3 text-center pt-5">
+            
+            <h1> _______ </h1> 
+            <h4  class="corre"> {{ categoria.descricao  | pontos }} </h4>
+        
+        </categoria-card>
+    </div>
+</div>

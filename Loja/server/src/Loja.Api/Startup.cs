@@ -1,49 +1,68 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Loja.Api.Configurations;
+using Loja.Infra.CrossCutting.Identity.Data;
+using Loja.Infra.CrossCutting.Identity.Services;
+using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Loja.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+               .SetBasePath(env.ContentRootPath)
+               .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+               .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+               .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //Op��es customizadas
+            services.AddMvcSecurity(Configuration);
+
             services.AddOptions();
 
             services.AddMvc(options =>
             {
-                //Restri��o XML
                 options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
-                //options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalActionLogger)));
-
-                
+              
             });
 
-            services.AddAutoMapper(typeof(Startup)); 
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddMediatR(typeof(Startup));
 
             services.AddDIConfiguration();
+
+            services.AddCors();
 
             services.AddControllers();
         }
@@ -60,9 +79,15 @@ namespace Loja.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
+            IdentityModelEventSource.ShowPII = true;
+
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

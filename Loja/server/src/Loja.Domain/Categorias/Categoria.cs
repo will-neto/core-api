@@ -13,8 +13,17 @@ namespace Loja.Domain.Categorias
             Produtos = new HashSet<Produto>();
         }
 
+
+        internal Categoria(string descricao, string imagemUrl)
+        {
+            this.Descricao = descricao;
+            this.ImagemUrl = imagemUrl;
+        }
+
         public int CategoriaId { get; set; }
         public string Descricao { get; set; }
+        public string ImagemUrl {get; set;}
+        public bool Ativo { get; set; }
 
         public virtual ICollection<Produto> Produtos { get; set; }
     }
