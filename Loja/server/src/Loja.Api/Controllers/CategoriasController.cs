@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Loja.Api.Controllers
 {
+    // Alteração Branch - Teste
     [Route("api/[controller]")]
     public class CategoriasController : Controller
     {
